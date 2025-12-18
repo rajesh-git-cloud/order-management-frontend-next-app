@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Order Management Frontend (Next.js)
 
-## Getting Started
+This is the **frontend of the Order Management project** built with **Next.js 16+, TypeScript, TailwindCSS, shadcn/ui components**.  
+It connects to the backend API to manage Orders with full CRUD functionality.
 
-First, run the development server:
+---
 
-```bash
+## Features
+
+### Table / Grid
+
+- **Columns:** Order No, Customer, Status, Amount, Created At, Updated At, Actions
+- **Sorting:** Click column headers to toggle ascending/descending
+- **Filtering:**
+  - **Status:** Multi-select dropdown with checkboxes + optional text input for custom filter
+  - **Customer:** Text input filter
+  - **Global search box** for key fields
+- **Pagination:**
+  - Page navigation (Prev/Next)
+  - Rows per page selector (10/20/50/100)
+- **Clear filters** button to reset active filters
+- **Loading indicators** while fetching data
+
+### CRUD Operations
+
+- **Add Order** (Dialog modal)
+- **Edit Order** (Dialog modal)
+- **Delete Order** with confirmation dialog
+- **Toast notifications** for success/error messages
+
+### UI Components (shadcn/ui)
+
+- Table, Dialog, Inputs, Selects, Buttons, Badges, Toasts
+
+### Auth & Interceptors (JWT-based)
+
+- JWT-based authentication
+- Redirect to login if token is missing/expired
+- HTTP interceptor adds token to requests and handles unauthorized errors
+
+### Routes
+
+- `/login` → Login page
+- `/orders` → Orders page (protected)
+
+### State Management
+
+- `useOrders` custom React hook manages:
+  - Orders data
+  - Filters
+  - Pagination
+  - Sorting
+  - Loading states
+  - Clear filters
+- Centralized client-side state (React + useState + hooks)
+
+---
+
+## Installation & Running Locally
+
+### 1. Clone the repository
+
+git clone <repo-url>
+cd order-management-frontend-next-app
+
+### Install dependencies
+npm install
+
+### Environment Variables
+File: .env
+NEXT_PUBLIC_API_URL=http://localhost:4000
+
+### Run Development Server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+** Importnant **
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Login with below credentials
+**Username**: admin
+**Password**: admin123
+```bash
